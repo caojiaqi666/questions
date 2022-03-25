@@ -31,20 +31,21 @@
  * @return {string[]}
  */
 var binaryTreePaths = function (root) {
-  let res = []
-  let paths = ""
+  let res = [];
 
-  const forE = (root)=> {
-    let path = root.val.toString();
+  const forE = (root, path) => {
     if (!root) return;
-    if (root.left) {
-      return paths += `->${forE(root.left)}`
-    } else if (root.right) {
-      return paths += `->${forE(root.right)}`
+    path += root.val.toString();
+    if (root.left == null && root.right == null) {
+      res.push(path);
+    } else {
+      path += "->";
+      forE(root.left, path);
+      forE(root.right, path);
     }
-  }
-  forE(root)
-  return res
+  };
+  forE(root, "");
+  return res;
 };
 
 console.log(binaryTreePaths([1, 2, 3, null, 5]));
