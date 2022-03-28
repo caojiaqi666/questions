@@ -42,25 +42,24 @@
 //   return max;
 // };
 
-let longestPalindrome = function (str) {
+let lengthOfLongestSubstring = function (str) {
+  let max = 0;
   let len = str.length;
-  let codeMap = {};
   let left = 0;
   let right = -1;
-  let max = 0;
+  let map = {};
   while (left < len) {
     let nextCode = str[right + 1];
-    if (!codeMap[nextCode] && nextCode !== undefined) {
-      codeMap[nextCode] = 1;
-      right++;
+    if (nextCode && !map[nextCode]) {
+      map[nextCode] = 1;
+      right++
     } else {
-      codeMap[str[left]] = 0;
-      left++;
+      map[str[left]] = 0;
+      left++
     }
-    max = Math.max(max, right - left + 1);
+    max = Math.max(max, right - left + 1)
   }
   return max;
 };
 
-let res = longestPalindrome("pwwkew");
-console.log('res: ', res);
+console.log(lengthOfLongestSubstring("abcabcbb"));
