@@ -102,12 +102,12 @@ console.log(fn3("#A37"));
 //   ]
 // }
 // */
-function fn4(data, parentId, id, pid) {
+function convert(data, parentId, id, pid) {
   let treeItem = [];
   data.forEach((item) => {
     if (item[parentId] === pid) {
-      if (!!fn4(data, parentId, id, item[id]).length)
-        item.children = fn4(data, parentId, id, item[id]);
+      if (!!convert(data, parentId, id, item[id]).length)
+        item.children = convert(data, parentId, id, item[id]);
       treeItem.push(item);
     }
   });
@@ -120,7 +120,7 @@ const list = [
   { id: 17, parentId: 16 },
   { id: 16, parentId: 0 },
 ];
-console.log(fn4(list, "parentId", "id", 0));
+console.log(convert(list, "parentId", "id", 0));
 
 
 /*

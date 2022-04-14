@@ -13,27 +13,36 @@ function ListNode(val, next) {
   this.next = next === undefined ? null : next;
 }
 let nums = [1, 2, 3, 4];
-console.log("ListNode(item, ): ", ListNode(nums));
 
-let swapPairs = function (head) {
-  if (!head) return null;
-  let helper = function (node) {
-    let tempNext = node.next;
-    if (tempNext) {
-      let tempNextNext = node.next.next;
-      node.next.next = node;
-      if (tempNextNext) {
-        node.next = helper(tempNextNext);
-      } else {
-        node.next = null;
-      }
-    }
-    return tempNext || node;
-  };
+// let swapPairs = function (head) {
+//   if (!head) return null;
+//   let helper = function (node) {
+//     let tempNext = node.next;
+//     if (tempNext) {
+//       let tempNextNext = node.next.next;
+//       node.next.next = node;
+//       if (tempNextNext) {
+//         node.next = helper(tempNextNext);
+//       } else {
+//         node.next = null;
+//       }
+//     }
+//     return tempNext || node;
+//   };
 
-  let res = helper(head);
+//   let res = helper(head);
 
-  return res || head;
+//   return res || head;
+// };
+
+var swapPairs = function (head) {
+  if (head === null || head.next === null) {
+    return head;
+  }
+  const newHead = head.next;
+  head.next = swapPairs(newHead.next);
+  newHead.next = head;
+  return newHead;
 };
 
 console.log("swapPairs([1,2,3,4]): ", swapPairs([1, 2, 3, 4]));
