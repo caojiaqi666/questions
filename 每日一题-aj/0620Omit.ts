@@ -18,7 +18,7 @@ type MyOmit<T, U extends keyof T> = {
 
 type TodoPreview = Omit<Todo, "description" | "title">;
 
-const todo: TodoPreview = {
+const todoList: TodoPreview = {
   completed: false,
 };
 
