@@ -11,6 +11,12 @@ type MyAwaited<T> = T extends Promise<infer P>
     : P
   : never;
 
+type p1 = Promise<string>;
+type p2 = Promise<number>;
+
+type res1 = MyAwaited<p1>;
+type res2 = MyAwaited<p1>;
+
 // 解题思路
 // infer + 递归 + Promise
 
@@ -44,4 +50,3 @@ type MyFirstVal<Trump extends unknown[]> = Trump extends [
 type xx = MyFirstVal<values1>;
 
 type yy = MyFirstVal<values2>;
-
