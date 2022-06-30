@@ -79,7 +79,7 @@ const userData: IData[] = [
   { name: "如意", pin: "ruyi", age: 88, sex: "女" },
 ];
 
-new Find(userData)
+new FindFn(userData)
   .where({
     age: /\d$/,
     // age: /^\\d+$/,
