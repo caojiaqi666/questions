@@ -80,7 +80,7 @@ const login = async (ctx) => {
 
 const loginout = async (ctx) => {
   try {
-    writeCookie(ctx, null, null)
+    writeCookie(ctx, null, null);
     return (ctx.body = {
       state: 0,
       msg: "退出成功",
@@ -354,11 +354,11 @@ const changeOwnAvatar = async (ctx) => {
   const { avatar } = ctx.request.body;
   console.log("avatar: ", avatar);
   let username = ctx.cookies.get("username") || null;
-  console.log('username: ', username);
+  console.log("username: ", username);
   if (username) {
     // 有cookie时
     let userId = await UserModel.findOne({ username });
-    console.log('userId: ', userId);
+    console.log("userId: ", userId);
     if (userId) {
       let res = await UserModel.updateOne(
         { username },
@@ -396,6 +396,114 @@ const changeOwnAvatar = async (ctx) => {
   }
 };
 
+const searchUser = async (ctx) => {
+  const res = {
+    code: "200",
+    contextCode: "200",
+    data: [
+      {
+        deptName: "钉 x-x 同 x 公 x 台 - 阿 x 云 x-x 盘 x 发 x 队 - 服 x 端",
+        deptNo: "F3778",
+        deptShortName: "服 x 端",
+        empType: "正式",
+        legalAffairs: false,
+        loginAccount: "",
+        name: "严 x",
+        nickName: "引 x",
+        personalPhoto: "TB1DMcUVSzqK1RjSZPxXXc4tVXa.tfsprivate",
+        personalPhotoUrl:
+          "https://g01.alibaba-inc.com/tfscom/TB1DMcUVSzqK1RjSZPxXXc4tVXa.tfsprivate",
+        workNo: "209379",
+        workStatus: "A",
+      },
+      {
+        deptName:
+          "阿 x 集 x-x 新 x 务 x 业 x-x 能 x 销 x 台-Ux 国 x 业 x 部 - 印 x 国 x 业 x 部-Hxtxpxtx & xrxcxex & xixlxcx xoxtxnx xpxrxtxoxs-CxixkxtxOxexaxixnx",
+        deptNo: "A4493",
+        deptShortName: "CxixkxtxOxexaxixnx",
+        empType: "正式",
+        legalAffairs: false,
+        loginAccount: "",
+        name: "G, xOxAx",
+        nickName: "",
+        personalPhoto: "TB1jaqVaEY1gK0jSZFCXXcwqXXa.tfsprivate",
+        personalPhotoUrl:
+          "https://g01.alibaba-inc.com/tfscom/TB1jaqVaEY1gK0jSZFCXXcwqXXa.tfsprivate",
+        workNo: "203494",
+        workStatus: "I",
+      },
+      {
+        deptName: "阿 x 集 x-x 新 x 务 x 业 x-xLxBx 业 x-x 术 x",
+        deptNo: "85613",
+        deptShortName: "技 x 部",
+        empType: "正式",
+        legalAffairs: false,
+        loginAccount: "",
+        name: "ZxAxGxYxNxLx",
+        nickName: "云 x",
+        personalPhoto: "TB1A5KhLCzqK1RjSZFjXXblCFXa.tfsprivate",
+        personalPhotoUrl:
+          "https://g01.alibaba-inc.com/tfscom/TB1A5KhLCzqK1RjSZFjXXblCFXa.tfsprivate",
+        workNo: "204055",
+        workStatus: "I",
+      },
+      {
+        deptName: "LxZxDx-xhxixaxd-DxgxtxlxGxoxs",
+        deptNo: "73320",
+        deptShortName: "DxgxtxlxGxoxs",
+        empType: "正式",
+        legalAffairs: false,
+        loginAccount: "",
+        name: "Axpxaxexkxax,xPxnxaxax",
+        nickName: "",
+        personalPhoto: "",
+        personalPhotoUrl: "",
+        workNo: "194911",
+        workStatus: "A",
+      },
+      {
+        deptName: "LxZxDx-xhxixaxd-DxgxtxlxGxoxs",
+        deptNo: "73320",
+        deptShortName: "DxgxtxlxGxoxs",
+        empType: "正式",
+        legalAffairs: false,
+        loginAccount: "",
+        name: "Rxtxaxaxoxl, xaxtxixa",
+        nickName: "",
+        personalPhoto: "TB1CGHtv4naK1RjSZFtXXbC2VXa.tfsprivate",
+        personalPhotoUrl:
+          "https://g01.alibaba-inc.com/tfscom/TB1CGHtv4naK1RjSZFtXXbC2VXa.tfsprivate",
+        workNo: "194559",
+        workStatus: "A",
+      },
+    ],
+    message: "success",
+    pager: {
+      begin: 0,
+      length: 0,
+      notValid: false,
+      page: 0,
+      pageCount: 0,
+      totalCount: 0,
+      valid: true,
+    },
+    success: true,
+    traceId: "0b7c1bbe16589111642714605253796",
+  };
+  console.log("被调用了");
+  // return new Promise((reslove, reject) => {
+  // setTimeout(() => {
+  //   // reslove(res);
+  //   return res;
+  // }, 500);
+  // });
+  return (ctx.body = {
+    state: 0,
+    msg: "修改头像成功",
+    userInfo: res,
+  });
+};
+
 module.exports = {
   login,
   loginout,
@@ -407,4 +515,5 @@ module.exports = {
   changeInfo,
   deleteUser,
   changeOwnAvatar,
+  searchUser,
 };

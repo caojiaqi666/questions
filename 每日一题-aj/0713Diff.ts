@@ -1,7 +1,4 @@
 // Diff 中等 #object
-// by ZYSzys @ZYSzys
-
-// 接受挑战    English
 
 // 获取两个接口类型中的差值属性。
 
@@ -17,7 +14,8 @@ type Bar = {
 type Result1 = Diff<Foo, Bar>; // { b: number, c: boolean }
 type Result2 = Diff<Bar, Foo>; // { b: number, c: boolean }
 
-// your answers
-type Diff<O, O1> = {
-  [key in Exclude<keyof (O & O1), keyof (O | O1)>]: (O & O1)[key];
+// type Diff<T, U> = Omit<T & U, keyof T & keyof U>;
+
+type Diff<T, U> = {
+  [key in Exclude<keyof (T & U), keyof (T | U)>]: (T & U)[key];
 };

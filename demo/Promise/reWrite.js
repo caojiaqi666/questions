@@ -796,7 +796,7 @@ class MyPromise {
     });
   }
 
-  static all(promises) {
+  static any(promises) {
     return new MyPromise((reslove, reject) => {
       const reasons = [];
       promises.forEach((promise) => {
