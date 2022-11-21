@@ -86,3 +86,26 @@
 // delay 1000
 // push5
 // William
+
+
+
+class Query {
+    constructor() {
+        this.sql = 'SELECT *';
+    }
+    table(tab) {
+        this.sql += ` FROM ${tab}`;
+        return this;
+    }
+    where(whe) {
+        this.sql += ` WHERE ${whe}`;
+        return this;
+    }
+    update(upd) {
+        this.sql += ` UPDATE ${upd}`;
+        console.log(this.sql);
+        return this;
+    }
+}
+const db = new Query();
+db.table('table').where('aaa = ? ', 123).update('bbb', 456)
