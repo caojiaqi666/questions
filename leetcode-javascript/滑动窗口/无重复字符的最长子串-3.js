@@ -33,4 +33,4 @@ let lengthOfLongestSubstring = function (str) {
   return max
 }
 
-console.log(lengthOfLongestSubstring("pwwkew"))
+console.log(lengthOfLongestSubstring("bbbb"))

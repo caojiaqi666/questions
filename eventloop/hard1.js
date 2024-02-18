@@ -8,46 +8,48 @@
 // 携程运行原理：协程在函数内部可以让出（yield），转而执行另一个函数，
 // 但是此时该协程并未真正结束，只是暂时让出 CPU 执行权，在适当的时候
 // 返回来可以接着恢复执行（resume），这种执行的转换不是函数调用，而是类似于 CPU 的中断
+
+// 遇到 await 会跳出此函数，继续执行其他同步函数
 async function async1() {
-	console.log("async1 start");
+	console.log("2");
 	await async2();
 	new Promise(function (resolve) {
-		// 2
 		resolve();
 	}).then(function () {
-		console.log("promise1"); // 4
+		console.log("9");
 	});
-	console.log("async1 end");
+	console.log("7");
 }
 
+// 注意 await 后面的函数是否返回 Promise
 async function async2() {
-	console.log("async2");
+	console.log("3");
 	setTimeout(function () {
-		console.log("setTimeout1");
+		console.log("11");
 	});
 	new Promise(function (resolve) {
 		resolve();
 	}).then(function () {
-		console.log("promise2"); // 1
+		console.log("6");
 	});
 }
 
-console.log("script start");
+console.log("1");
 
 setTimeout(function () {
-	console.log("setTimeout2");
+	console.log("10");
 }, 0);
 
 async1();
 
 new Promise(function (resolve) {
-	console.log("promise3");
+	console.log("4");
 	resolve();
 }).then(function () {
-	console.log("promise4"); // 3
+	console.log("8");
 });
 
-console.log("script end");
+console.log("5");
 
 // script start
 // async1 start

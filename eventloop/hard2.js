@@ -1,43 +1,43 @@
 
 async function async1() {
-	console.log("async1 start");
-	async2(); // 注意这里有await与没有的区别
+	console.log("2");
+	await async2(); // 注意这里有await与没有的区别
 	new Promise(function (resolve) {
 		resolve();
 	}).then(function () {
-		console.log("promise1"); // 2
+		console.log("9"); // 2
 	});
-	console.log("async1 end");
+	console.log("8");
 }
 
 async function async2() {
-	console.log("async2");
+	console.log("3");
 	setTimeout(function () {
-		console.log("setTimeout1");
+		console.log("10");
 	});
-	new Promise(function (resolve) {
+	return new Promise(function (resolve) {
 		resolve();
 	}).then(function () {
-		console.log("promise2"); // 1
+		console.log("6"); // 1
 	});
 }
 
-console.log("script start");
+console.log("1");
 
 setTimeout(function () {
-	console.log("setTimeout2");
-}, 0);
+	console.log("11");
+}, 10);
 
 async1();
 
 new Promise(function (resolve) {
-	console.log("promise3");
+	console.log("4");
 	resolve();
 }).then(function () {
-	console.log("promise4"); // 3
+	console.log("7"); // 3
 });
 
-console.log("script end");
+console.log("5");
 
 // script start
 // async1 start

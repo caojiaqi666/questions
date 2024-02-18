@@ -6,7 +6,7 @@ function func(num) {
 setTimeout(func(1));
 async function async3() {
 	await async4();
-	console.log(8); // 1
+	console.log(8);
 }
 async function async4() {
 	console.log(5);
@@ -17,7 +17,7 @@ function func2() {
 	console.log(2);
 	async function async1() {
 		await async2();
-		console.log(9); // 1
+		console.log(9);
 	}
 	async function async2() {
 		console.log(5);
@@ -31,8 +31,8 @@ new Promise((resolve) => {
 	console.log("Promise");
 	resolve();
 })
-	.then(() => console.log(6))  // 2
-	.then(() => console.log(7)); // 3
+	.then(() => console.log(6))
+	.then(() => console.log(7));
 console.log(0);
 
 // 5

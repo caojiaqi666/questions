@@ -34,15 +34,43 @@
  * @param {number[]} cost
  * @return {number}
  */
+
+// 超时了
+// var canCompleteCircuit = function (gas, cost) {
+// 	let index = -1;
+// 	let len = gas.length;
+// 	for (let i = 0; i < len; i++) {
+// 		let newgas = gas.slice(i).concat(gas.slice(0, i));
+// 		let newcost = cost.slice(i).concat(cost.slice(0, i));
+// 		let arr = new Array(len).fill(0);
+// 		for (let k = 0; k < len; k++) {
+// 			arr[k] = (arr[k - 1] || 0) + newgas[k] - newcost[k];
+// 		}
+// 		if (arr.every((item) => item >= 0)) index = i;
+// 	}
+// 	return index;
+// };
+
+
+// 因为如果存在解，则保证它是唯一的，所以一定是差值的最小前缀和的下一站。
+// 如果总差值小于零，说明总油量不够行驶一周无解。
 var canCompleteCircuit = function (gas, cost) {
-  let len = gas.length;
-  let sum = 0;
-  let start = 0;
-  
+	let len = gas.length;
+	let sum = 0;
+	let min = 0;
+	let index = 0;
+	for (let i = 0; i < len; i++) {
+		sum += gas[i] - cost[i];
+		if (sum < min) {
+			min = sum;
+			index = i + 1;
+		}
+	}
+	return sum < 0 ? -1 : index;
 };
 
 let gas = [1, 2, 3, 4, 5],
-  cost = [3, 4, 5, 1, 2];
+	cost = [3, 4, 5, 1, 2];
 
 let res = canCompleteCircuit(gas, cost);
 console.log("res: ", res);

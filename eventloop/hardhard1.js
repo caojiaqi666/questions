@@ -8,12 +8,12 @@
 console.log("1");
 
 setTimeout(() => {
-	console.log("7"); // 7
+	console.log("7");
 }, 1 * 2000);
 
 Promise.resolve()
 	.then(function (resolve) {
-		console.log("4"); // 1
+		console.log("4");
 	})
 	.then(function () {
 		console.log("6"); 
@@ -21,7 +21,7 @@ Promise.resolve()
 
 async function foo() {
 	await bar();
-	console.log("5"); // 2
+	console.log("5");
 }
 foo();
 
@@ -37,7 +37,7 @@ async function errorFunc() {
 	console.log("async1");
 	return Promise.resolve("async1 success");
 }
-errorFunc().then((res) => console.log(res)); // 3
+errorFunc().then((res) => console.log(res));
 
 function bar() {
 	console.log("2");

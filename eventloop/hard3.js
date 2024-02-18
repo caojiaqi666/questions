@@ -4,28 +4,28 @@ let b = new Promise((resolve, reject) => {
 	// resolve(); // 注意是否有resolve，有才会执行then
 	console.log(2);
 }).then((x) => {
-	console.log(3); // 1
+	console.log(); // 1
 });
 setTimeout(() => {
-	console.log(4);
+	console.log(9);
 }, 100);
 let c = async () => {
 	setTimeout(() => {
 		new Promise((resolve, reject) => {
-			console.log(6);
+			console.log(8);
 		});
 	}, 0);
 	let x = await new Promise((resolve, reject) => {
-		console.log(5);
-		resolve(7);
+		console.log(4);
+		resolve(6);
 	});
-	console.log(x); // 2
-	console.log(8);
+	console.log(6);
+	console.log(7);
 };
 
-console.log(9);
+console.log(3);
 c();
-console.log(10);
+console.log(5);
 
 // 1
 // 2
