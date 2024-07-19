@@ -17,3 +17,6 @@ type head1 = First<arr1>; // expected to be 'a'
 type head2 = First<arr2>; // expected to be 3
 
 type head3 = FirstInfer<arr2>; // expected to be 3
+
+
+type MyFirst2<T extends any[]> = T extends [] ? never : T[0] 

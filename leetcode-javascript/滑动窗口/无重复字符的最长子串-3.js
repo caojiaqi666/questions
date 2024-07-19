@@ -1,3 +1,10 @@
+/*
+ * @Author: 安姜
+ * @Date: 2022-06-09
+ * @LastEditors: 安姜
+ * @LastEditTime: 2023-08-04
+ * @Description:
+ */
 /**
  * @param {string} s
  * @return {number}
@@ -19,10 +26,11 @@ let lengthOfLongestSubstring = function (str) {
       freqMap[str[left]] = 0
       left++
     }
+    console.log("freqMap: ", freqMap)
     max = Math.max(max, right - left + 1)
   }
 
   return max
 }
 
-console.log(lengthOfLongestSubstring("pwwkew"))
+console.log(lengthOfLongestSubstring("bbbb"))

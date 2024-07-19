@@ -25,3 +25,13 @@ type myPick<T, U extends keyof T> = {
 type Cat = Pick<Person, "name" | "age">;
 
 let suannai: Cat = { name: "suannai", age: 1 };
+
+
+
+type pick2<T, K extends keyof T> = {
+  [C in K] : T[C]
+}
+
+type Cat2 = Pick<Person, "name" | "age">;
+
+let niangao: Cat2 = { name: "niangao", age: 1 };

@@ -9,18 +9,24 @@
 // 例如：
 
 interface Todo {
-  title: string
-  description: string
+  title: string;
+  description: string;
 }
 
 type MyReadonly<T> = {
-  readonly [C in keyof T]: T[C]
-}
+  readonly [C in keyof T]: T[C];
+};
 
 const todo: MyReadonly<Todo> = {
   title: "Hey",
-  description: "foobar"
-}
+  description: "foobar",
+};
 
 // todo.title = "Hello" // Error: cannot reassign a readonly property
 // todo.description = "barFoo" // Error: cannot reassign a readonly property
+
+type MyReadonly2<T> = {
+  readonly [C in keyof T]: T[C];
+};
+
+type todo2 = MyReadonly2<Todo>;

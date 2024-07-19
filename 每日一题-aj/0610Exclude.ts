@@ -16,3 +16,10 @@ type excludeNum = MyExclude<StrNum, number>;
 // Extract 的功能，与 Exclude 相反，它是 提取 T 中可以赋值给 U 的类型。
 
 type MyExtract<T, U> = T extends U ? T : never
+
+type Exclude2<T, K> = T extends K ? never : T
+
+
+type MyExtract2<T, K> = T extends K ? T : never
+
+type a = Exclude2<StrNum, string>
